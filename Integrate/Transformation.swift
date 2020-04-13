@@ -6,10 +6,12 @@ import Foundation
     a NSExpression aceita para receber parametros diferentes
     de numeros ou da constante x
  */
+
 func transformacaoString(input: String){
     
     //Array de possiveis entradas trigonometricas
-    let validations: [String] = ["cos", "sin", "tan"]
+    let validations: [String] = ["cos", "sin", "tan", "asin", "acos", "atan",
+                                 "sinh", "cosh", "tanh"]
     let inputArray: Array = Array(input)
     
     // Variavel de controle
@@ -25,11 +27,19 @@ func transformacaoString(input: String){
         }
         
         //Verifica se esta contido no validations
-        if validations.contains(String(inputArray[i...i+2])) {
+        else if validations.contains(String(inputArray[i...i+2]))  &&
+                !validations.contains(String(inputArray[i...i+3])){
             
             formula += "function(x, '\(String(inputArray[i...i+2]))')"
             i += 6
         }
+        
+        else if validations.contains(String(inputArray[i...i+3])){
+                   
+            formula += "function(x, '\(String(inputArray[i...i+3]))')"
+            i += 7
+        }
+        
         else{
             
             formula.append(inputArray[i])
