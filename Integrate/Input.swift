@@ -34,7 +34,7 @@ func inputUsuario(tipodeInput: TypeInput){
             // Utiliza o readline para pegar a equação digitada pelo usúario.
             if input.count != 0 {
                 mostraOpcoes(type: TypeInput.function, input: input)
-                formula = input
+                transformacaoString(input: input)
             } else {
                 print("Dado invalido, digite novamente:")
                 continue
